@@ -16,7 +16,7 @@ int knapSack(int W, int wt[], int val[], int n)
     }
     if (wt[n - 1] <= W)
     {
-        return t[n][W] = max({val[n - 1], knapSack(W - wt[n - 1], wt, val, n - 1), knapSack(W, wt, val, n - 1)});
+        return t[n][W] = max(val[n - 1]+knapSack(W - wt[n - 1], wt, val, n - 1), knapSack(W, wt, val, n - 1));
     }
     else if (wt[n - 1] > W)
     {
@@ -40,8 +40,8 @@ int main()
         cin >> val[i];
     }
     
-    int ans = knapSack(w,wt,val,n);
-    cout << ans;
+    
+    cout << t[n][w];
     
     
 
