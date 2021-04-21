@@ -42,6 +42,7 @@ int main(){
                 t[i][j] = max(p[i-1]+t[i][j-l[i-1]],t[i-1][j]);
             }
             else
+            
                 t[i][j] = t[i-1][j];
         }
         
