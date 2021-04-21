@@ -11,7 +11,6 @@ int main(){
 
     int t[n+1][m+1];
 
-    string ans;
 
     for (int i = 0; i <= n; i++)
     {
@@ -29,7 +28,6 @@ int main(){
         for (int j = 1; j <= m; j++)
         {
             if(s1[i-1]== s2[j-1]){
-                //ans.push_back(s1[i-1]);
                 t[i][j] = 1+t[i-1][j-1];
             }
             else{
@@ -39,9 +37,29 @@ int main(){
         
     }
     
-    cout << t[n][m];
-    cout << ans;
+    int i = n, j = m;
+    string ans = "";
 
+    while (i > 0 && j > 0)
+    {
+        if(s1[i-1] == s2[j-1]){
+            ans.push_back(s1[i-1]);
+            i--;
+            j--;
+        }
+        else{
+
+            if(t[i-1][j] > t[i][j-1]){
+                i--;
+            }
+            else{
+                j--;
+            }
+        }
+    }
+    
+    reverse(ans.begin(),ans.end());
+    cout << ans ;
 
     return 0;
 }
